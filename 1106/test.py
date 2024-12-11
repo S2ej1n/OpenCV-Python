@@ -1,10 +1,10 @@
+# 이진화 트랙바 만들기
 import cv2
 
 def onThreshold(value):
-    cv2.threshold(img, value, 255, cv2.THRESH_BINARY, img)
-    cv2.imshow("result", img)
+    _, img_bin = cv2.threshold(img, value, 255, cv2.THRESH_BINARY)
+    cv2.imshow("result", img_bin)
 
-global img
 img = cv2.imread("matplot.jpg",cv2.IMREAD_GRAYSCALE)
 if img is None: raise Exception("영상파일읽기오류")
 
