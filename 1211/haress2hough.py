@@ -19,16 +19,20 @@ x, y, w, h = np.add(rect, (-10, -10, 20, 20)) # 검출 객체 사각형 크기 �
 roi = th_gray[y:y+h, x:x+w]
 rho, theta = 1, np.pi / 180 # 허프 변환 거리 간격, 각도 간격
 canny = cv2.Canny(roi, 40, 100) # 케니 에지 검출
-lines = cv2.HoughLinesP(canny, rho, theta, 30, None, 40, 5) #OpenCV함수
+
+lines = cv2.HoughLinesP(canny, rho, theta, 50, None, 50, 10) #OpenCV함수
 
 cv2.rectangle(morph, (x,y,w,h), 100, 2) #큰 객체 사각형 표시
+
 canny = cv2.cvtColor(canny, cv2.COLOR_GRAY2BGR)
 
 for line in lines:
+    # line - 각 선의 정보를 포함하는 배열, 각 요소는 [x1, y1, x2, y2] 형식의 좌표
     x1, y1, x2, y2 = line[0]
     cv2.line(canny, (x1,y1), (x2,y2), (0,0,255), 2)
 
 angle = (np.pi - lines[0, 0, 1]) * 180 / np.pi
+
 h, w = image.shape[:2]
 center = (w//2, h//2)
 rot_map = cv2.getRotationMatrix2D(center, -angle, 1)    # 반대방향 회전 행렬 계산
