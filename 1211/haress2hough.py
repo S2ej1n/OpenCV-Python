@@ -33,6 +33,13 @@ for line in lines:
 
 angle = (np.pi - lines[0, 0, 1]) * 180 / np.pi
 
+# # 첫 번째 선의 좌표 가져오기
+# x1, y1, x2, y2 = lines[0][0]
+# 선의 기울기 기반 각도 계산
+# angle = np.arctan2(y2 - y1, x2 - x1) * 180 / np.pi
+
+
+
 h, w = image.shape[:2]
 center = (w//2, h//2)
 rot_map = cv2.getRotationMatrix2D(center, -angle, 1)    # 반대방향 회전 행렬 계산
