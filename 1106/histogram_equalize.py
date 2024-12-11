@@ -1,3 +1,4 @@
+# 히스토그램 평활화
 import numpy as np, cv2
 
 def draw_histo(hist, shape=(200, 256)):
@@ -35,3 +36,8 @@ hist_img2 = draw_histo(hist2)
 
 cv2.imshow("image", image)
 cv2.imshow("hist_img", hist_img)
+cv2.imshow("dst_User", dst1)
+cv2.imshow("User_hist", hist_img1)
+cv2.imshow("dst2_opencv", dst2)
+cv2.imshow("opencv_hist", hist_img2)
+cv2.waitKey(0)

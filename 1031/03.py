@@ -20,7 +20,7 @@ def search_value_idx(hist, bias=0):
             return idx
     return -1
 
-image = cv2.imread("../1017/minMax.jpg", cv2.IMREAD_GRAYSCALE)
+image = cv2.imread("hist_stretch.jpg", cv2.IMREAD_GRAYSCALE)
 if image is None: raise Exception("영상 파일 읽기 오류")
 
 bsize, ranges = [64],[0,256]
