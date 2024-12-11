@@ -1,3 +1,4 @@
+# 속도를 개선한 허프 변환 - 확률 huff
 import cv2
 import numpy as np
 
