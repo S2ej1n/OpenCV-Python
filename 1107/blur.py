@@ -1,6 +1,6 @@
+#책 예제 - 블러링
 import numpy as np
 import cv2
-
 
 # 회선 수행 함수 - 행렬 처리 방식
 def filter(image, mask):
