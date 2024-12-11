@@ -3,22 +3,21 @@ import numpy as np, cv2
 
 image = cv2.imread("color_edge.jpg", cv2.IMREAD_COLOR)
 if image is None: raise Exception("영상 파일 읽기 오류")
+rep_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def CannyBar(value):
+def CannyBar(th):
     pass
+
 def Median(value):
     pass
 def Gaussian(value):
     pass
-
-canny2 = cv2.Canny(image, 100, 150)
 
 title = "test"
 cv2.namedWindow(title)
 cv2.createTrackbar('Canny th', title, 0 ,100, CannyBar)
 cv2.createTrackbar('median', title, 0 ,1, Median)
 cv2.createTrackbar('gaussian', title, 0 ,1, Gaussian)
-cv2.imshow("g",canny2)
 
 while True:
     if cv2.waitKey(30) >= 0: break
