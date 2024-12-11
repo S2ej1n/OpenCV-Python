@@ -3,9 +3,11 @@ import numpy as np, cv2
 image = cv2.imread("laplacian.jpg", cv2.IMREAD_GRAYSCALE)
 if image is None: raise Exception("영상 파일 읽기 오류")
 
+# 4방향 - 상하좌우 에지 강조
 data1 = [ [0, 1, 0],
           [1, -4, 1],
           [0, 1, 0]]
+# 8방향 - 대각선 포함 모든 방향 에지 강조
 data2 = [[ -1, -1, -1],
          [-1, 8, -1],
          [-1, -1, -1]]
@@ -14,6 +16,8 @@ mask8 = np.array(data2, np.int16)
 
 dst1 = cv2.filter2D(image, cv2.CV_16S, mask4)
 dst2 = cv2.filter2D(image, cv2.CV_16S, mask8)
+
+# 이건 openCV 내장 라플라시안 필터 / 마지막 ksize- 음수나 짝수 지정하면 오류남
 dst3 = cv2.Laplacian(image, cv2.CV_16S, 1)
 
 cv2.imshow("image", image)
