@@ -34,7 +34,7 @@ def onMouse(event, x, y, flags, param):
         wrap(np.copy(image))
 
 #
-image = cv2.imread("ham.jpeg", cv2.IMREAD_COLOR)
+image = cv2.imread("perspective2.jpg", cv2.IMREAD_COLOR)
 if image is None: raise Exception("영상파일 읽기 에러")
 
 small = np.array([12,12])
