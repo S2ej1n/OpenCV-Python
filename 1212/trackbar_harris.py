@@ -1,12 +1,10 @@
 # 수업내용중 k-최근접 이건 Xx 금요일 보강떄 할겨
-
 # 해리스코너 트랙바 달기
 
 import cv2
 import numpy as np
-from fontTools.unicodedata import block
 
-
+# 임계값 이상인 좌표를 특징점으로 영상에 표시
 def drawConer(corner, image, thresh):
     cnt = 0
     corner = cv2.normalize(corner, 0, 100, cv2.NORM_MINMAX)
