@@ -1,5 +1,4 @@
 # 마우스 드래그로 영상 회전
-# 코드 수정해야함
 import math
 import numpy as np, cv2
 
@@ -36,12 +35,16 @@ def rotate_pt(img, degree, pt):
                 dst[i,j] = bilinear_value(img, (x,y))
     return dst
 
+# 각도를 계산하는 함수
 def calc_angle(pt):
+    # 두 좌표간의 차분 계산. => 두 좌표의 너비와 높이 계산.
     d1 = np.subtract(pts[1], pts[0]).astype(float)
-    d2 = np.subtract(pts[2],pts[0]).astype(float)
+    d2 = np.subtract(pts[2], pts[0]).astype(float)
+
+    # fastAtan2 : 가로, 세로 방향 차분을 입력하면 각도 값 반환
     angle1 = cv2.fastAtan2(d1[1], d1[0])
     angle2 = cv2.fastAtan2(d2[1], d2[0])
-    return (angle2 - angle1)
+    return (angle2 - angle1) # 두 각도의 차분이 드래그한 영역의 각도가 됨
 
 def draw_point(x, y):
     pts.append([x,y])
@@ -51,8 +54,11 @@ def draw_point(x, y):
 
 def onMouse(event, x, y, flags, param):
     global tmp, pts
+    # 첫번쨰 점
     if (event == cv2.EVENT_LBUTTONUP and len(pts) == 0): draw_point(x,y)
+    # 두번째 점
     if (event == cv2.EVENT_LBUTTONDOWN and len(pts) == 1): draw_point(x,y)
+    # 세번째 점
     if (event == cv2.EVENT_LBUTTONUP and len(pts) == 2): draw_point(x,y)
 
     if len(pts) == 3:
